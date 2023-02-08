@@ -2,14 +2,16 @@ import pygame
 
 class Feld:
     object = None
-    punktBool = True
+    punktBool = False
     powerUpBool = False
     area = None
-    def __init__(self, ob, pu, po, ar):
-        Feld.object = ob
-        Feld.punktBool = pu
-        Feld.powerUpBool = po
-        Feld.area = ar
+    wall = False
+    def __init__(self, obj, pun, pow, area, wall):
+        self.object = obj
+        self.punktBool = pun
+        self.powerUpBool = pow
+        self.area = area
+        self.wall = wall
 
 """
 Feld

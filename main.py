@@ -1,4 +1,5 @@
-import pygame
+import pygame.event
+from pygame import *
 import Feld
 import Wand
 import Spielfeld
@@ -20,6 +21,17 @@ def main():
     levelStrArr = importCSV()
 
     spielfeld = Spielfeld.Spielfeld(levelStrArr)
+    fensterbreite = 800
+    fensterhöhe = 400
+    fenster = pygame.display.set_mode((fensterbreite, fensterhöhe))
+    running = True
+    clock = pygame.time.Clock()
+    while running:
+        clock.tick(60)
+        spielfeld.drawSpielfeld(fenster)
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                running = False
 
 if __name__ == '__main__':
     main()
