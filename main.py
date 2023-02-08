@@ -21,8 +21,8 @@ def main():
     levelStrArr = importCSV()
 
     spielfeld = Spielfeld.Spielfeld(levelStrArr)
-    fensterbreite = 800
-    fensterhöhe = 400
+    fensterbreite = 608
+    fensterhöhe = 704
     fenster = pygame.display.set_mode((fensterbreite, fensterhöhe))
     running = True
     clock = pygame.time.Clock()
