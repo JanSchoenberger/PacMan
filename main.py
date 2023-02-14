@@ -26,14 +26,24 @@ def main():
     fenster = pygame.display.set_mode((fensterbreite, fensterhöhe))
     running = True
     clock = pygame.time.Clock()
+    frame = 0
+    xfeld = 9
+    yfeld = 16
+
     while running:
-        clock.tick(60)
-        spielfeld.drawSpielfeld(fenster)
+        clock.tick(14)
+        spielfeld.drawSpielfeld(fenster,xfeld, yfeld)
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 running = False
-            if event.type == KEYDOWN and event.key == K_d:
-                print("d gedrückt") 
+            if event.type == KEYDOWN and event.key == K_d or event.type == KEYDOWN and event.key == K_RIGHT:
+                xfeld +=1
+            if event.type == KEYDOWN and event.key == K_a or event.type == KEYDOWN and event.key == K_LEFT:
+                xfeld -=1 
+            if event.type == KEYDOWN and event.key == K_w or event.type == KEYDOWN and event.key == K_UP:
+                yfeld -=1
+            if event.type == KEYDOWN and event.key == K_s or event.type == KEYDOWN and event.key == K_DOWN:
+                yfeld +=1       
                 
 
 

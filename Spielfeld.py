@@ -4,6 +4,8 @@ from Pacman import *
 class Spielfeld:
     feldGroesse = 30
     spielfeldArr = [[]]*22
+    feldY = 16
+    feldX = 9
 
     #Spielfeldinitialisierung:
     def __init__(self, strArr):
@@ -36,8 +38,8 @@ class Spielfeld:
         self.spielfeldArr[16][9].object = Pacman()
         self.spielfeldArr[16][9].punktBool = False
 
-
-    def drawSpielfeld(self, fenster):
+# 480 270
+    def drawSpielfeld(self, fenster, xfeld, yfeld):
         pygame.display.set_caption("Kawaiiman")
         fenster.fill((0, 0, 0))
         for y in self.spielfeldArr:
@@ -53,6 +55,10 @@ class Spielfeld:
                     xColor = (180,0,180)
                 
                 pygame.draw.rect(fenster, xColor, x.area)
+        
+        
+
+        Pacman.draw(fenster, xfeld, yfeld)
         pygame.display.update()
 """
 Spielfeld
