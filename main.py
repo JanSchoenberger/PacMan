@@ -5,6 +5,10 @@ import Wand
 import Spielfeld
 import os
 import csv
+import Pacman
+
+
+
 
 def importCSV():
     with open("assets/LVL.CSV") as csv_file:
@@ -16,6 +20,22 @@ def importCSV():
             lineCounter += 1
             #print(lineCounter)
         return temArray
+
+def inputPlayer(Pacman):
+    for event in pygame.event.get():
+            if event.type == KEYDOWN and event.key == K_d or event.type == KEYDOWN and event.key == K_RIGHT:
+                Pacman.xFeld +=1
+            if event.type == KEYDOWN and event.key == K_a or event.type == KEYDOWN and event.key == K_LEFT:
+                Pacman.xFeld -=1 
+            if event.type == KEYDOWN and event.key == K_w or event.type == KEYDOWN and event.key == K_UP:
+                Pacman.yFeld -=1
+            if event.type == KEYDOWN and event.key == K_s or event.type == KEYDOWN and event.key == K_DOWN:
+                Pacman.yFeld +=1       
+            if  event.type == pygame.QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                return False
+    return True
+    
+
 
 def main():
     levelStrArr = importCSV()
@@ -29,23 +49,13 @@ def main():
     frame = 0
     xfeld = 9
     yfeld = 16
+    figurPacman = Pacman.Pacman()
 
     while running:
-        clock.tick(14)
-        spielfeld.drawSpielfeld(fenster,xfeld, yfeld)
-        for event in pygame.event.get():
-            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                running = False
-            if event.type == KEYDOWN and event.key == K_d or event.type == KEYDOWN and event.key == K_RIGHT:
-                xfeld +=1
-            if event.type == KEYDOWN and event.key == K_a or event.type == KEYDOWN and event.key == K_LEFT:
-                xfeld -=1 
-            if event.type == KEYDOWN and event.key == K_w or event.type == KEYDOWN and event.key == K_UP:
-                yfeld -=1
-            if event.type == KEYDOWN and event.key == K_s or event.type == KEYDOWN and event.key == K_DOWN:
-                yfeld +=1       
-                
 
+        clock.tick(14)
+        spielfeld.drawSpielfeld(fenster, figurPacman)
+        running = inputPlayer(figurPacman)
 
 if __name__ == '__main__':
     main()

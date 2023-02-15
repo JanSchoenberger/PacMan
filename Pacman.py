@@ -1,7 +1,6 @@
 import pygame
 import Spielfeld
 import time as t
-
 from main import *
 
 class Pacman:
@@ -11,14 +10,14 @@ class Pacman:
 	bildPacMan = pygame.image.load("assets/PacMan.png")
 	frame = 0
 	feldGroesse = 30
-	feldX = 9
-	feldY = 16
+	xFeld = 9
+	yFeld = 16
 
 	def __init__ (self):
 		self.bewegungsRichtung = "links"
 
 	@staticmethod
-	def draw(fenster, xFeld, yFeld):
+	def drawPacman(fenster, Pacman):
 		bildBereiche = ["", "", ""] #, "", "", "", "", "", "", "", "", ""
 		bildBereiche[0] = (0 ,0, 30,30 )
 		bildBereiche[1] = (31,0, 30,30 )
@@ -37,7 +36,7 @@ class Pacman:
 
 		if Pacman.frame > 2: # 11:
 			Pacman.frame = 0
-		position = (xFeld * (Pacman.feldGroesse + 2), yFeld * (Pacman.feldGroesse + 2))
+		position = (Pacman.xFeld * (Pacman.feldGroesse + 2), Pacman.yFeld * (Pacman.feldGroesse + 2))
 		fenster.blit(Pacman.bildPacMan, position, bildBereiche[Pacman.frame])
 		# t.sleep(0.2)
 # (0,0, 45,45 )
