@@ -7,6 +7,7 @@ import os
 import csv
 import Pacman
 import Geist
+import time
 
 def importCSV():
     with open("assets/LVL.CSV") as csv_file:
@@ -61,6 +62,26 @@ def main():
         clock.tick(14)
         spielfeld.drawSpielfeld(fenster, figurPacman, Geister) # Übergabe des Pacman, damit man in dem inputPlayer() die Bewegung des Pacman manipulieren kann.
         running = inputPlayer(figurPacman) 
+
+        Geist1.xGeist += 1
+        Geist2.xGeist += 1
+        Geist3.xGeist += 1
+        Geist4.xGeist += 1
+        
+        if Geist1.xGeist > 18:
+            Geist1.xGeist = 0
+        if Geist2.xGeist > 18:
+            Geist2.xGeist = 0
+        if Geist3.xGeist > 18:
+            Geist3.xGeist = 0
+        if Geist4.xGeist > 18:
+            Geist4.xGeist = 0
+
+        # Geist1.xGeist -= 1
+        # Geist2.xGeist -= 1
+        # Geist3.xGeist -= 1
+        # Geist4.xGeist -= 1
+
 
 if __name__ == '__main__':
     main()
