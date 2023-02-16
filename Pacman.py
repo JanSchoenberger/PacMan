@@ -16,7 +16,7 @@ class Pacman:
 	def __init__ (self):
 		self.bewegungsRichtung = "links"
 
-	@staticmethod
+	@staticmethod # Nochmal überarbeiten, denn mal sage ich es ist static, aber in der main.py übergebe ich dann ein Objekt.
 	def drawPacman(fenster, Pacman):
 		bildBereiche = ["", "", ""] #, "", "", "", "", "", "", "", "", ""
 		bildBereiche[0] = (0 ,0, 30,30 )

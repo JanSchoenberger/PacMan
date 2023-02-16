@@ -6,9 +6,7 @@ import Spielfeld
 import os
 import csv
 import Pacman
-
-
-
+import Geist
 
 def importCSV():
     with open("assets/LVL.CSV") as csv_file:
@@ -51,11 +49,18 @@ def main():
     yfeld = 16
     figurPacman = Pacman.Pacman()
 
+    Geist1 = Geist.Geist(8,10, pygame.image.load("assets/Geist_pink.png"))
+    Geist2 = Geist.Geist(9,10, pygame.image.load("assets/Geist_orange.png")) 
+    Geist3 = Geist.Geist(10,10,pygame.image.load("assets/Geist_rot.png"))
+    Geist4 = Geist.Geist(9,9, pygame.image.load("assets/Geist_türkis.png")) 
+    
+    Geister = (Geist1,Geist2, Geist3, Geist4)
+
     while running:
 
         clock.tick(14)
-        spielfeld.drawSpielfeld(fenster, figurPacman)
-        running = inputPlayer(figurPacman)
+        spielfeld.drawSpielfeld(fenster, figurPacman, Geister) # Übergabe des Pacman, damit man in dem inputPlayer() die Bewegung des Pacman manipulieren kann.
+        running = inputPlayer(figurPacman) 
 
 if __name__ == '__main__':
     main()

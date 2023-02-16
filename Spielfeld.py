@@ -2,6 +2,8 @@ import Feld
 import pygame
 import Pacman
 from main import *
+from Geist import *
+
 
 class Spielfeld:
     feldGroesse = 30
@@ -33,7 +35,7 @@ class Spielfeld:
                     tempArea = pygame.Rect(countChar*self.feldGroesse+countChar*2, countLine*self.feldGroesse+countLine*2, self.feldGroesse, self.feldGroesse)
                 if(char=="E"):
                     tempArea = pygame.Rect(countChar*self.feldGroesse+countChar*2, countLine*self.feldGroesse+countLine*2, self.feldGroesse, self.feldGroesse)
-                self.spielfeldArr[countLine][countChar] = Feld.Feld(tempObj, tempPun, tempPow, tempArea, tempWall)
+                self.spielfeldArr[countLine][countChar] = Feld.Feld(tempObj, tempPun, tempPow, tempArea, tempWall) 
                 countChar +=1
             countChar =0
             countLine +=1
@@ -41,7 +43,7 @@ class Spielfeld:
         self.spielfeldArr[16][9].punktBool = False
 
 # 480 270
-    def drawSpielfeld(self, fenster, Pacman):
+    def drawSpielfeld(self, fenster, Pacman, Geister):
         pygame.display.set_caption("Kawaiiman")
         fenster.fill((0, 0, 0))
         for y in self.spielfeldArr:
@@ -59,8 +61,18 @@ class Spielfeld:
                 pygame.draw.rect(fenster, xColor, x.area)
         
         
+        Geist1 = Geister[0]
+        Geist2 = Geister[1]
+        Geist3 = Geister[2]
+        Geist4 = Geister[3]
 
-        Pacman.drawPacman(fenster, Pacman)
+        Pacman.drawPacman(fenster,Pacman)
+
+        Geist1.drawGeister(fenster)
+        Geist2.drawGeister(fenster)
+        Geist3.drawGeister(fenster)
+        Geist4.drawGeister(fenster)
+
         pygame.display.update()
 """
 Spielfeld
